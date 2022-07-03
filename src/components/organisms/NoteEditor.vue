@@ -8,24 +8,32 @@
         <template v-slot:footer>
           <Row v-if="warningType === 'cancel'" :rpt="2" size="auto" position="center">
             <router-link to="/">
-              <Button type="cansel">Нет</Button>
+              <!-- <Button type="cansel">Нет</Button> -->
+               <CancelRed />
             </router-link>
-            <Button type="confirm" @click="onSave">Да</Button>
+            <!-- <Button type="confirm" @click="onSave">Да</Button> -->
+             <Like @handleClick="onSave"/>
           </Row>
           <Row v-if="warningType === 'delete'" :rpt="2" size="auto" position="center">
     
-              <Button type="cansel" @click="toggleWarn">Нет</Button>
-
-            <Button type="confirm" @click="deleteNote" >Да</Button>
+              <!-- <Button type="cansel" @click="toggleWarn">Нет</Button> -->
+              <CancelRed @handleClick="toggleWarn"/>
+   <Like @handleClick="deleteNote"/>
+            <!-- <Button type="confirm" @click="deleteNote" >Да</Button> -->
           </Row>
         </template>
       </Modal>
-      <Row :rpt="2" size="auto" position="space-between">
+      <Wrapper xy="20 15 5 0" :positiony="0">
+      <Row :rpt="1" size="60% 30%" position="space-between">
         <StyledInput
+       
+        type="text"
+          size="20px"
           placeholder="Введите заголовок"
           v-model="note.title"
         ></StyledInput>
         <!-- <Title1 v-else> {{note.title}}</Title1> -->
+     
 
         <Row :rpt="4" size="auto" position="end">
           <Create @handleClick="createTask" :w="40" :h="40" />
@@ -34,14 +42,18 @@
           <Trash @handleClick="toggleWarn" />
         </Row>
       </Row>
+      </Wrapper>
+
     </Wrapper>
     <NoteContainer>
       <div v-if="note && note.tasks">
         <TaskItem
-          @saveTask=""
+        @handleCheck="changeStatus"
+          
           @deleteTask="deleteTask"
           v-for="task in note.tasks"
           :task="task"
+          :key="task.id"
         />
       </div>
     </NoteContainer>
@@ -60,6 +72,8 @@ import Save from "../icons/Save.vue";
 import Create from "../icons/Create.vue";
 import StyledInput from "../atoms/StyledInput";
 import Modal from "../molecules/Modal.vue";
+import Like from "../icons/Like.vue"
+import CancelRed from "../icons/CancelRed.vue"
 import { Button } from "../atoms/Button";
 
 export default {
@@ -69,16 +83,9 @@ export default {
       note: null,
       warning: false,
       warningMessage: null,
+      editing: false
     };
   },
-  // watch: {
-  //   note: {
-  //     handler(newValue, oldValue) {
-  //       debugger
-  //     },
-  //     deep: true
-  //   }
-  // },
   components: {
     Title1,
     Wrapper,
@@ -92,11 +99,14 @@ export default {
     Create,
     Modal,
     Button,
+    Like,
+    CancelRed
   },
   computed: {
     createMod: function () {
       return this.$route.name === "CreatePage" ? true : false;
     },
+
   },
 
   created() {
@@ -142,7 +152,24 @@ export default {
 
       this.$router.push({ name: "Home" });
     },
+        changeStatus(id) {
+          const task = this.note.tasks.find((el) => el.id === id)
+          if (task.title) {
+            task.checked = !task.checked
+                      this.$forceUpdate()
+          }
+    },
     toggleWarn(type) {
+      if (type === "cancel") {
+        this.$store.dispatch("loadNotes");
+        let thisNote = JSON.stringify(this.note)
+        let stateNote = this.$store.state.notes.find((el) => el.id === this.note.id)
+        stateNote = JSON.stringify(stateNote)
+
+        if (thisNote === stateNote) {
+          return
+        }
+      }
       type === "cancel"
         ? (this.warningMessage = "Сохранить изменения?")
         : type === "delete"

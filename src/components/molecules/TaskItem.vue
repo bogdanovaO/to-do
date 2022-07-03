@@ -1,18 +1,20 @@
 <template>
   <div v-if="task && mode">
     <ListContainer type="note">
-      <Row @click="changeMode" :rpt="3" size="auto" position="start" padding="10px 10px 10px 15px">
-        <CheckBox :checked="true" />
+      <Row  :rpt="1" size="5% 85% 5%" position="start" padding="10px 10px 10px 15px">
+        <CheckBox @onChange="$emit('handleCheck', task.id)" :key="task.id" :checked="task.checked" />
+  
         <StyledInput
+          size="16px"
           type="text"
           placeholder="Что нужно сделать?"
           v-model="task.title"
-        >
-          bgfbfgbfb
-        </StyledInput>
-        <Row :rpt="1" size="auto" position="end">
+        />
+        
+        
+        <!-- <Row :rpt="1" size="auto" position="end"> -->
           <CancelMin @handleClick="$emit('deleteTask', task.id)"></CancelMin>
-        </Row>
+        <!-- </Row> -->
       </Row>
     </ListContainer>
   </div>
@@ -47,9 +49,7 @@ export default {
     task: Object,
   },
   methods: {
-    changeMode() {
-      this.mode = "create";
-    },
+
   },
 };
 </script>

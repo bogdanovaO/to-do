@@ -2,9 +2,7 @@
 <div @click="handleClick">
   <Checked v-if="checked"/>
   <Unchecked v-else/>
-
 </div>
-
   
 </template>
 
@@ -19,11 +17,15 @@ export default {
   },
   props: {
     checked: Boolean,
-    id: Number
+    id: Number,
+
+
+
   },
   methods: {
     handleClick()  {
-      this.$emit("onChange", this.props.id)
+      this.$emit("onChange")
+      this.key = 'update'
     }
   }
 }

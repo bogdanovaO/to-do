@@ -1,28 +1,19 @@
 <template>
-  <transition name="fade" >
-    <div class="modal"  >
-      <div class="modal__backdrop" />
+  <transition name="fade">
+    <div class="modal">
+      <div class="modal__backdground" />
 
       <div class="modal__dialog">
         <Wrapper xy="20 20 20 20" size="100%">
-
-       
-        <!-- <div class="modal__header"> -->
           <Row :rpt="2" size="auto" position="space-between">
-                      <Title2>{{title}}</Title2>
-          <Button  @click="$emit('close')" >
-          <CanselMin/>
-          </Button>
-                </Row>
-                 </Wrapper>
-        <!-- </div> -->
-
-        <div class="modal__body">
-          <slot name="body"/>
-        </div>
-
+            <Title2>{{ title }}</Title2>
+            <Button @click="$emit('close')">
+              <CanselMin />
+            </Button>
+          </Row>
+        </Wrapper>
         <div class="modal__footer">
-          <slot name="footer"/>
+          <slot name="footer" />
         </div>
       </div>
     </div>
@@ -51,25 +42,23 @@ export default {
 </script> -->
 
 <script>
-import CanselMin from '../icons/CanselMin.vue'
-import {Button} from '../atoms/Button'
-import {Title2} from '../atoms/Text'
-import  Row from '../atoms/Row'
-import Wrapper from '../atoms/Wrapper'
+import CanselMin from "../icons/CanselMin.vue";
+import { Button } from "../atoms/Button";
+import { Title2 } from "../atoms/Text";
+import Row from "../atoms/Row";
+import Wrapper from "../atoms/Wrapper";
 export default {
   components: {
     CanselMin,
     Button,
     Title2,
     Row,
-    Wrapper
-
+    Wrapper,
   },
   props: {
-    title: String
-  }
-  
-}
+    title: String,
+  },
+};
 </script>
 
 
@@ -85,7 +74,7 @@ export default {
   bottom: 0;
   left: 0;
   z-index: 9;
-  &__backdrop {
+  &__backdground {
     background-color: rgba(0, 0, 0, 0.3);
     position: fixed;
     top: 0;
@@ -103,37 +92,11 @@ export default {
     flex-direction: column;
     border-radius: 5px;
     z-index: 2;
-    @media screen and (max-width: 992px) {
-      width: 90%;
-    }
   }
-  &__close {
-    // width: 30px;
-    // height: 30px;
-  }
-  &__header {
-    padding: 20px 20px 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  &__body {
-    padding: 10px 20px 10px;
-    overflow: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
+  
   &__footer {
     padding: 10px 20px 20px;
   }
 }
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
-}
+
 </style>

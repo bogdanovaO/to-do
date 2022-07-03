@@ -7,10 +7,8 @@ import basicStyles from './styles/basic.js'
 import PortalVue from 'portal-vue'
 
 
-
 Vue.use(PortalVue)
 Vue.config.productionTip = false
-
 
 new Vue({
   router,

@@ -38,7 +38,7 @@ export default new Vuex.Store({
         return {
           id: id,
           title: '',
-          finished: false
+          checked: false
         }
       }
     },

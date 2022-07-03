@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Wrapper xy="0 15 5 0" :positiony="0">
+    <Wrapper xy="20 15 5 0" :positiony="0">
       <Row :rpt="1" size="1fr">
         <Title1>To-Do List</Title1>
       </Row>
@@ -12,14 +12,10 @@
           <Create />
         </router-link>
       </Row>
-
-
-
-      
     </Wrapper>
 
     <MainContainer type="primary">
-      <NoteItem v-for="note in notes" :note="note" />
+      <NoteItem  v-for="note in notes" :note="note" />
     </MainContainer>
   </div>
 </template>
@@ -51,6 +47,7 @@ export default {
 
   },
   methods: {
+
 
 
   },
