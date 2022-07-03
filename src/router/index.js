@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import NoteEditing from '../views/NoteEditing'
+import DetailPage from '../views/DetailPage'
 
 Vue.use(VueRouter)
 
@@ -9,13 +9,21 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
+    props: true
   },
   {
-    path: '/editing',
-    name: 'NoteEditing',
-    component: NoteEditing
-  }
+    path: '/editing/:id',
+    name: 'DetailPage',
+    component: DetailPage
+  },
+  {
+    path: '/create',
+    name: 'CreatePage',
+    component: DetailPage,
+    type: 'create'
+  },
+
 ]
 
 const router = new VueRouter({

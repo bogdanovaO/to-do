@@ -1,37 +1,21 @@
 <template>
-
-
-
-<MainContainer type="primary">
-  <NotePreview/>
-  
-
-
-</MainContainer>
-
-
-
-
-  
+  <div>
+    <ToDoList/>
+  </div>
 </template>
-
 <script>
-// @ is an alias to /src
-import BreadCrumbsStyled from '../components/BreadCrumbs/BreadCrumbsStyled';
 
-import { MainContainer}  from '../components/Containers'
-import NotePreview from '../components/NotePreview.vue';
-import Text from '../components/Text'
+import ToDoList from '../components/organisms/ToDoList.vue'
 
 
 export default {
   name: 'Home',
   components: {
-    BreadCrumbsStyled,
-
-    MainContainer,
-    NotePreview
-
-  }
+    ToDoList
+  },
+  props: {
+    theme: Object
+  },
 }
 </script>
+

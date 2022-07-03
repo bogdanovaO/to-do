@@ -5,7 +5,9 @@ import store from './store'
 import {ThemeProvider} from 'vue-styled-components'
 import basicStyles from './styles/basic.js'
 
+
 Vue.config.productionTip = false
+
 
 new Vue({
   router,

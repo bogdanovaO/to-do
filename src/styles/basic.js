@@ -12,9 +12,16 @@
     hoverMain: '#99C631',
     hoverAccent: '',
     red: '#F22727',
+    green: '#99C631',
+    grey: '#D9D9D9'
 
   }, 
+  effects: {
+
+  buttonShadow:`0px 0px 39px -10px rgba(255, 255, 255, 0.2) inset;`
+  },
   sizes: {
+    buttonWidth: 100,
     radius: 20, 
     Title1: 40, 
     Title2: 18, 
