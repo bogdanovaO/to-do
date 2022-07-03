@@ -2,18 +2,28 @@ import styled from 'vue-styled-components'
 
 
 const buttonProps = {
-  color: String,
+  // color: String,
   type: String,
+  // textColor: String
   // theme: Object,
 
 }
 
 export const Button = styled('button',buttonProps)`
 height: 36px;
-min-width: 60px;
+// min-width: 60px;
 padding: 0 16px;
 align-items: center;
 border-radius: 4px;
+background:  ${props => props.type === 'cansel' ?
+  props.theme.colors.red :
+  props => props.type === 'confirm' ?
+  props.theme.colors.green :
+  props.theme.colors.pageMain
+
+};
+color:  ${props => props.textColor};
+
 letter-spacing: .05em;
 justify-content: center;
 text-decoration: none;

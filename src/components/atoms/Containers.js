@@ -19,7 +19,7 @@ border-radius: ${props => props.theme.sizes.radius}px;
 export const ListContainer = styled('div', containersProps)
 `
 width: 100%;
-padding: 10px;
+padding: 15px 15px 15px 25px;
 margin-bottom: 10px;
 background:  ${props => props.theme.colors.pageMain};
 border-radius: ${props => props.theme.sizes.radius}px;

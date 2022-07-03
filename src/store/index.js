@@ -53,10 +53,19 @@ export default new Vuex.Store({
         }
       }
     },
-    // DELETE_TASK(state, id) {
-    //   const currentNoteId = state.currentNote.id
-    //   state.notes.find((note) => note.id === currentNoteId)
-    // }
+    DELETE_TASK(state, id) {
+
+      let ind = null
+      state.notes.find((note, index) => {
+        if (note.id === id) {
+          ind = index
+
+        }
+      })
+      state.notes.splice(ind, 1)
+      const json = JSON.stringify(state.notes)
+      localStorage.setItem('notes', json)
+    }
   },
   actions: {
     loadNotes({
@@ -93,12 +102,12 @@ export default new Vuex.Store({
     }) {
       commit('CREATE_NOTE_TEMPLATE')
     },
-    // deleteTask({
-    //   commit
-    // }, id) {
-    //   commit('DELTE', id)
+    deleteNote({
+      commit
+    }, id) {
+      commit('DELETE_TASK', id)
 
-    // },
+    },
   },
   modules: {}
 })

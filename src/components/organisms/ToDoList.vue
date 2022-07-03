@@ -12,6 +12,10 @@
           <Create />
         </router-link>
       </Row>
+
+
+
+      
     </Wrapper>
 
     <MainContainer type="primary">
@@ -28,11 +32,13 @@ import { MainContainer } from "../atoms/Containers";
 import NoteItem from "../molecules/NoteItem.vue";
 import Create from "../icons/Create.vue";
 
+
 export default {
   name: "ToDoList",
   data() {
     return {
       notes: null,
+
     };
   },
   components: {
@@ -42,6 +48,11 @@ export default {
     NoteItem,
     Title1,
     Create,
+
+  },
+  methods: {
+
+
   },
 
   created() {

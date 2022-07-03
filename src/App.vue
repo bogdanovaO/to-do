@@ -3,15 +3,18 @@
       <BreadCrumbsStyled>link/link/link</BreadCrumbsStyled>
    
       <router-view />
+
     </Wrapper>
 </template>
 <script>
 import Wrapper from "./components/atoms/Wrapper";
+
 export default {
 
   components: {
     Wrapper,
-  },
+
+},
 
 
 };

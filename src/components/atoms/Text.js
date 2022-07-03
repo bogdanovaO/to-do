@@ -15,6 +15,7 @@ export const Title2 = styled('h1', textProps)`
 font-size: ${basicStyles.sizes.Title2}px;
 font-style: normal;
 margin: 0;
+
 font-stretch: normal;
 `
 export const Title3 = styled('h1', textProps)`

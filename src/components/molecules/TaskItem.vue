@@ -1,7 +1,7 @@
 <template>
   <div v-if="task && mode">
     <ListContainer type="note">
-      <Row @click="changeMode" :rpt="3" size="auto" position="start">
+      <Row @click="changeMode" :rpt="3" size="auto" position="start" padding="10px 10px 10px 15px">
         <CheckBox :checked="true" />
         <StyledInput
           type="text"
