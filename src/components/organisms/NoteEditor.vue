@@ -167,6 +167,7 @@ export default {
         stateNote = JSON.stringify(stateNote)
 
         if (thisNote === stateNote) {
+          this.$router.push({ name: "Home" });
           return
         }
       }
