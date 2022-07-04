@@ -161,12 +161,13 @@ export default {
     },
     toggleWarn(type) {
       if (type === "cancel") {
+      
         this.$store.dispatch("loadNotes");
         let thisNote = JSON.stringify(this.note)
         let stateNote = this.$store.state.notes.find((el) => el.id === this.note.id)
         stateNote = JSON.stringify(stateNote)
 
-        if (thisNote === stateNote) {
+        if (thisNote === stateNote || !stateNote ) {
           this.$router.push({ name: "Home" });
           return
         }
